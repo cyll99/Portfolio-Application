@@ -44,6 +44,16 @@ export const addProject = async (req, res) => {
   }
 };
 
+export const deleteProject = async (req, res) => {
+  try {
+    res.status(202).send("DeleteProject");
+  } catch (error) {
+    console.error(error);
+    res.send(500).redirect("/error");
+  }
+};
+
+/* PROJECT DETAILS */
 export const renderProjectDetail = async (req, res) => {
   try {
     res.status(200).send("DetailPage");
