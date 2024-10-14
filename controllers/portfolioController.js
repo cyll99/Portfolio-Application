@@ -62,3 +62,20 @@ export const renderProjectDetail = async (req, res) => {
     res.status(500).redirect("/error");
   }
 };
+
+export const renderEditPojectDetail = async (req, res) => {
+  try {
+    res.status(200).send("EditProjectDetailPage");
+  } catch (error) {
+    console.error(error);
+    res.status(500).redirect("/error");
+  }
+};
+
+export const editProjectDetail = async (req, res) => {
+  try {
+    res.send(200).send("EditProjectDetail");
+  } catch (error) {
+    res.status(500).redirect("/error");
+  }
+};
