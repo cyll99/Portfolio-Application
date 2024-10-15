@@ -8,6 +8,14 @@
   width: 100%;
 }
 
+.card-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-image:hover {
+  transform: scale(1.01); /* Scales the image to 110% of its size */
+}
+
 .card-overview {
   justify-content: space-evenly;
   display: flex;
