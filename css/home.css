@@ -1,7 +1,6 @@
 .custom-card {
   width: 18rem;
 }
-
 .card-container {
   display: flex;
   justify-content: space-evenly;
@@ -17,7 +16,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 .edit-button {
   width: 45%;
 }
