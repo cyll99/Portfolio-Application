@@ -28,7 +28,7 @@ export const editProject = async (req, res) => {
 
 export const renderAddProject = async (req, res) => {
   try {
-    res.status(202).send("AddProjectPage");
+    res.render("add-project");
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
