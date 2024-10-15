@@ -21,54 +21,36 @@
 
     <div>
       <div class="pt-3 card-container">
-        <div class="card m-3 custom-card">
-          <img
-            src="../images/apple.png"
-            class="card-img-top card-image"
-            alt="Project 001"
-          />
-          <div class="card-body">
-            <div class="title-type-container">
-              <h3 class="card-title">Project 001</h3>
-              <p class="card-title fw-light">Web Development</p>
-            <h5 class="fw-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h5>
-            </div>
-            
+        <% if(projects.length > 0) { %>
+          <% { for(let project of projects) %> 
+            <div class="card m-3 custom-card">
+              <img
+                src=<%= project.image %>
+                class="card-img-top card-image"
+                alt=<%= project.image %>
+              />
+              <div class="card-body">
+                <div class="title-type-container">
+                  <h3 class="card-title"><%= project.projectTitle %></h3>
+                  <p class="card-title fw-light"><%= project.projectType %></p>
+                <h5 class="fw-light"> <%= project.overview %> </h5>
+                </div>
+                
 
-            <div>
-              <a href="#" class="btn btn-outline-dark mx-1 mt-4 edit-button">
-                <i class="bi bi-pencil-fill"></i>
-              </a>
-              <a href="#" class="btn btn-outline-dark mx-1 mt-4 edit-button">
-                <i class="bi bi-trash-fill"></i>
-              </a>
+                <div>
+                  <a href="#" class="btn btn-outline-dark mx-1 mt-4 edit-button">
+                    <i class="bi bi-pencil-fill"></i>
+                  </a>
+                  <a href="#" class="btn btn-outline-dark mx-1 mt-4 edit-button">
+                    <i class="bi bi-trash-fill"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="card m-3 custom-card">
-          <img
-            src="../images/apple.png"
-            class="card-img-top card-image"
-            alt="Project 001"
-          />
-          <div class="card-body">
-            <div class="name-price-container">
-              <h3 class="card-title">Project 001</h3>
-              <h4 class="card-title fw-light">Mobile Application</h4>
-            </div>
-            <div>
-              <a href="#" class="btn btn-outline-dark mx-1 mt-4 edit-button">
-                <i class="bi bi-pencil-fill"></i>
-              </a>
-              <a href="#" class="btn btn-outline-dark mx-1 mt-4 edit-button">
-                <i class="bi bi-trash-fill"></i>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-
+        <% } %>
+      <% }else{ %>
     <div>
       <div class="pt-3 card-container">
         <div class="ms-5 p-5">
@@ -79,5 +61,6 @@
         </div>
       </div>
     </div>
+    <% } %>
   </body>
 </html>

@@ -1,7 +1,10 @@
+import Project from "../models/project.js";
+
 /* PROJECT OVERVIEW */
 export const renderProject = async (req, res) => {
   try {
-    res.render("home");
+    const projects = await Project.find();
+    res.render("home", {projects:projects});
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
