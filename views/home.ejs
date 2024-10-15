@@ -22,7 +22,7 @@
     <div>
       <div class="pt-3 card-container">
         <% if(projects.length > 0) { %>
-          <% { for(let project of projects) %> 
+          <% for(let project of projects) {%> 
             <div class="card m-3 custom-card">
               <img
                 src=<%= project.image %>
@@ -47,9 +47,10 @@
                 </div>
               </div>
             </div>
+          <% } %>
       </div>
     </div>
-        <% } %>
+        
       <% }else{ %>
     <div>
       <div class="pt-3 card-container">
