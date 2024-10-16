@@ -51,7 +51,7 @@ export const editProject = async (req, res) => {
   }
 };
 
-export const renderAddProject = async (req, res) => {
+export const renderAddProject = (req, res) => {
   try {
     res.render("add-project");
   } catch (error) {

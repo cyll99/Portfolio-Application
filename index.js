@@ -9,6 +9,7 @@ import editProject from "./routes/editProject.js";
 import addProject from "./routes/addProject.js";
 import deleteProject from "./routes/deleteProject.js";
 import editDetail from "./routes/editDetail.js";
+import userAuth from "./routes/userAuth.js";
 
 const dbString = "mongodb://localhost:27017/portfolio";
 
@@ -44,6 +45,7 @@ app.use("/edit-project", editProject);
 app.use("/add-project", addProject);
 app.use("/delete-project", deleteProject);
 app.use("/edit-detail", editDetail);
+app.use("/", userAuth);
 
 // Get the current directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
