@@ -13,7 +13,12 @@ export const renderProject = async (req, res) => {
 
 export const renderEditProject = async (req, res) => {
   try {
-    res.status(202).send("EditProjectPage");
+    const project = await Project.findById(req.params.id);
+    if (project) {
+      res.render("edit-project", { project: project });
+    } else {
+      res.redirect("/");
+    }
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
