@@ -27,7 +27,24 @@ export const renderEditProject = async (req, res) => {
 
 export const editProject = async (req, res) => {
   try {
-    res.status(202).send("EditProject");
+    const { projectTitle, projectType, overview } = req.body;
+    const image = req.file.destination + "/" + req.file.filename;
+    const id = req.params.id;
+
+    const project = await Project.findById(id);
+
+    if (!project) {
+      return res.status(404).send("Not found");
+    }
+
+    project.projectTitle = projectTitle;
+    project.projectType = projectType;
+    project.overview = overview;
+    project.image = image;
+
+    await project.save();
+
+    res.redirect('/');
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
