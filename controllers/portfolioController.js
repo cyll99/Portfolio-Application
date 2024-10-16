@@ -44,7 +44,7 @@ export const editProject = async (req, res) => {
 
     await project.save();
 
-    res.redirect('/');
+    res.redirect("/");
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
@@ -79,7 +79,9 @@ export const addProject = async (req, res) => {
 
 export const deleteProject = async (req, res) => {
   try {
-    res.status(202).send("DeleteProject");
+    
+    await Project.findByIdAndDelete(req.params.id);
+    res.redirect("/");
   } catch (error) {
     console.error(error);
     res.send(500).redirect("/error");
