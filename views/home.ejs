@@ -17,7 +17,7 @@
     <title>Home</title>
   </head>
   <body>
-    <%- include('./includes/navbar.ejs')%>
+    <%- include('./includes/navbar.ejs'), {isLoggedIn: isLoggedIn}%>
 
     <div>
       <div class="pt-3 card-container">

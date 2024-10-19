@@ -10,7 +10,8 @@ import addProject from "./routes/addProject.js";
 import deleteProject from "./routes/deleteProject.js";
 import editDetail from "./routes/editDetail.js";
 import userAuth from "./routes/userAuth.js";
-
+import MongoStore from "connect-mongo";
+import session from "express-session";
 const dbString = "mongodb://localhost:27017/portfolio";
 
 mongoose
@@ -26,6 +27,18 @@ const PORT = 3000;
 /* SETTING THE TEMPLATING ENGINE */
 app.set("view engine", "ejs");
 app.set("views", "views");
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: dbString, 
+    }),
+  })
+);
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

@@ -18,7 +18,7 @@
     <title>Sign Up</title>
   </head>
   <body>
-    <%- include("./includes/navbar.ejs") %>
+    <%- include("./includes/navbar.ejs"), {isLoggedIn: isLoggedIn} %>
     <div class="container-fluid mt-4 form-container">
       <form
         class="w-25"

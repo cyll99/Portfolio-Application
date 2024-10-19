@@ -1,9 +1,11 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
+import JWT from "jsonwebtoken";
+import tokenSignature from "../views/global.js";
 
 export const renderLoginPage = async (req, res) => {
   try {
-    res.render("login");
+    res.render("login", { isLoggedIn: global.isLoggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
@@ -16,6 +18,8 @@ export const login = async (req, res) => {
   try {
     User.fetchUserByUsername(userName).then((credentials) => {
       if (bcrypt.compare(password, credentials.password)) {
+        const token = JWT.sign({ userName }, tokenSignature);
+        req.session.token = token;
         res.redirect("/");
       } else {
         res.redirect("/login");
@@ -29,7 +33,7 @@ export const login = async (req, res) => {
 
 export const renderSignup = async (req, res) => {
   try {
-    res.render("sign-up");
+    res.render("sign-up", { isLoggedIn: global.isLoggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
@@ -37,14 +41,12 @@ export const renderSignup = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-
   const { userName, password, confirmPassword } = req.body;
   console.log(userName);
-  
-  
+
   try {
     const hashPassword = await bcrypt.hash(password, 10);
-    await User.insertUser({ userName, password:hashPassword });
+    await User.insertUser({ userName, password: hashPassword });
     res.redirect("/login");
   } catch (error) {
     console.error(error);
@@ -53,5 +55,14 @@ export const signup = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  res.redirect("/");
+ 
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+      return res.status(500).send("Error logging out");
+    }
+    // Once the session is destroyed, redirect to the home page
+    res.redirect("/");
+  });
 };
+

@@ -4,7 +4,7 @@ import Project from "../models/project.js";
 export const renderProject = async (req, res) => {
   try {
     const projects = await Project.find();
-    res.render("home", { projects: projects });
+    res.render("home", { projects: projects, isLoggedIn: global.isLoggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
@@ -15,7 +15,10 @@ export const renderEditProject = async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     if (project) {
-      res.render("edit-project", { project: project });
+      res.render("edit-project", {
+        project: project,
+        isLoggedIn: global.isLoggedIn,
+      });
     } else {
       res.redirect("/");
     }
@@ -53,7 +56,7 @@ export const editProject = async (req, res) => {
 
 export const renderAddProject = (req, res) => {
   try {
-    res.render("add-project");
+    res.render("add-project", { isLoggedIn: global.isLoggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).redirect("/error");
@@ -79,7 +82,6 @@ export const addProject = async (req, res) => {
 
 export const deleteProject = async (req, res) => {
   try {
-    
     await Project.findByIdAndDelete(req.params.id);
     res.redirect("/");
   } catch (error) {
