@@ -17,10 +17,15 @@ export const login = async (req, res) => {
 
   try {
     User.fetchUserByUsername(userName).then((credentials) => {
-      if (bcrypt.compare(password, credentials.password)) {
-        const token = JWT.sign({ userName }, tokenSignature);
-        req.session.token = token;
-        res.redirect("/");
+      if (credentials) {
+        const isMatch = bcrypt.compare(password, credentials.password);
+        if (isMatch) {
+          const token = JWT.sign({ userName }, tokenSignature);
+          req.session.token = token;
+          res.redirect("/");
+        } else {
+          res.redirect("/");
+        }
       } else {
         res.redirect("/login");
       }
@@ -42,7 +47,6 @@ export const renderSignup = async (req, res) => {
 
 export const signup = async (req, res) => {
   const { userName, password, confirmPassword } = req.body;
-  console.log(userName);
 
   try {
     const hashPassword = await bcrypt.hash(password, 10);
@@ -55,7 +59,6 @@ export const signup = async (req, res) => {
 };
 
 export const logout = (req, res) => {
- 
   req.session.destroy((err) => {
     if (err) {
       console.error("Error destroying session:", err);
@@ -65,4 +68,3 @@ export const logout = (req, res) => {
     res.redirect("/");
   });
 };
-

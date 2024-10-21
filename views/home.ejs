@@ -36,7 +36,7 @@
                 <h5 class="fw-light"> <%= project.overview %> </h5>
                 </div>
                 
-
+                <% if (isLoggedIn === "true") { %>
                 <div>
                   <a href="/edit-project/<%= project.id %>" class="btn btn-outline-dark mx-1 mt-4 edit-button">
                     <i class="bi bi-pencil-fill"></i>
@@ -45,6 +45,7 @@
                     <i class="bi bi-trash-fill"></i>
                   </a>
                 </div>
+                <% } %>
               </div>
             </div>
           <% } %>
@@ -56,8 +57,7 @@
       <div class="pt-3 card-container">
         <div class="ms-5 p-5">
           <h1>No Project Available</h1>
-          <a href="/add-project" class="btn btn-outline-dark fs-4 my-3"
-            >Add Project</a
+          
           >
         </div>
       </div>
