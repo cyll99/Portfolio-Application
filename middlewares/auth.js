@@ -7,18 +7,15 @@ const auth = (req, res, next) => {
   const token = req.session.token;
   if (req.path === "/logout") {
     global.isLoggedIn = "init";
-    console.log("logout", global.isLoggedIn);
 
     next();
   } else {
     try {
       global.isLoggedIn = "true";
-      console.log("try", global.isLoggedIn);
 
       next();
     } catch (error) {
       if (global.isLoggedIn === "init") {
-        console.log("catch", global.isLoggedIn);
 
         next();
       } else {
