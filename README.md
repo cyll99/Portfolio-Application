@@ -118,4 +118,8 @@ This project relies on the following Node.js packages:
 
 ---
 
+## Video Walkthrough
 
+Here's a walkthrough of implemented user stories:
+
+<img src='portofolio.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
