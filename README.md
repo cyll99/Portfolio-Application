@@ -5,16 +5,16 @@ This is a **Portfolio Application** built using **Express.js**, **EJS**, and **C
 ## Features
 
 - **Public View**: 
-  - Visitors can view a list of portfolio projects.
-  - Each project displays an image, title, category, and description.
+  [x] Visitors can view a list of portfolio projects.
+  [x] Each project displays an image, title, category, and description.
   
 - **User Registration & Authentication**: 
-  - Users can create an account to manage their portfolio.
-  - Sign in and sign out functionality.
+  [x] Users can create an account to manage their portfolio.
+  [x] Sign in and sign out functionality.
   
 - **Project Management**: 
-  - Logged-in users can add new projects.
-  - Users can edit or delete their own projects.
+  [x] Logged-in users can add new projects.
+  [x] Users can edit or delete their own projects.
 
 ## Tech Stack
 
