@@ -122,4 +122,4 @@ This project relies on the following Node.js packages:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='portofolio.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='portfolio.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
